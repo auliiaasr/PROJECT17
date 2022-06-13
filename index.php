@@ -23,7 +23,7 @@
             </div>
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
     </nav>
@@ -37,23 +37,71 @@
         $(document).ready(function() {
             loadData();
 
-            function loadData({
-                sort = null
-            } = {}) {
+            function loadData() {
                 $.ajax({
+                    type: 'GET',
                     url: 'read.php',
-                    type: 'get',
-                    data: {
-                        sort: sort,
-                    },
                     success: function(data) {
                         $('#content').html(data);
                     }
                 });
             }
+
+            // Delete
+            $.ajax({
+                type: 'POST',
+                url: 'delete.php',
+                data: {
+                    id: $(this).attr("value")
+                },
+                cache: false,
+                success: function(data) {
+                    $('#content').html(data);
+                }
+            });
+
+            // Search Ajax
+            $('#search').on('keyup', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'search.php',
+                    data: {
+                        search: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
+                });
+            });
+
+            // Filter Ajax
+            $('#filter').on('change', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'filter.php',
+                    data: {
+                        filter: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
+                });
+            });
+
+            // Sort Ajax
             $('#sort').on('change', function() {
-                loadData({
-                    sort = $(this).val()
+                $.ajax({
+                    type: 'POST',
+                    url: 'sort.php',
+                    data: {
+                        sort: $(this).val()
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
                 });
             });
         });

@@ -1,11 +1,6 @@
 <?php
 require_once 'connect.php';
-if (isset($_GET['sort'])) {
-    $sort = $_GET['sort'];
-    $query = mysqli_query($conn, "SELECT * FROM skincare INNER JOIN concern ON skincare.id_concern = concern.id_concern ORDER BY harga " . $sort . "");
-} else {
-    $query = mysqli_query($conn, "SELECT * FROM skincare INNER JOIN concern ON skincare.id_concern = concern.id_concern");
-}
+$query = mysqli_query($conn, "SELECT * FROM skincare INNER JOIN concern ON skincare.id_concern = concern.id_concern");
 while ($row = mysqli_fetch_object($query)) :
 ?>
     <div class="col-sm-3 mb-3">
