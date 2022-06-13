@@ -47,17 +47,31 @@
                 });
             }
 
-            // Delete
-            $.ajax({
-                type: 'POST',
-                url: 'delete.php',
-                data: {
-                    id: $(this).attr("value")
-                },
-                cache: false,
-                success: function(data) {
-                    $('#content').html(data);
-                }
+            // Create Ajax
+            $('#create').on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'create.php',
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
+                });
+            });
+
+            // Delete Ajax
+            $('#delete').on('click', function() {
+                $.ajax({
+                    type: 'POST',
+                    url: 'delete.php',
+                    data: {
+                        id: $(this).attr("value")
+                    },
+                    cache: false,
+                    success: function(data) {
+                        $('#content').html(data);
+                    }
+                });
             });
 
             // Search Ajax

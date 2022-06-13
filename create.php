@@ -4,86 +4,66 @@ require_once 'connect.php';
 
 // alert
 $alert = null;
-$errorTitle = $errorDescription = $errorReleaseYear = $errorLanguageId = $errorRentalDuration = null;
-$errorRentalRate = $errorLength = $errorReplacementCost = $errorRating = $errorSpecialFeatures = null;
+$errorNama_skincare = $errorHarga = $errorRating = $errorDeskripsi = $errorIngredient = $errorIdConcern = $errorGambar = null;
 
 // create db
 if (isset($_POST['create'])) {
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $release_year = $_POST['release_year'];
-    $language_id = $_POST['language_id'];
-    $rental_duration = $_POST['rental_duration'];
-    $rental_rate = $_POST['rental_rate'];
-    $length = $_POST['length'];
-    $replacement_cost = $_POST['replacement_cost'];
+    $nama_skincare = $_POST['nama_skincare'];
+    $harga = $_POST['harga'];
     $rating = $_POST['rating'];
-    $special_features = $_POST['special_features'];
+    $deskripsi = $_POST['deskripsi'];
+    $ingredient = $_POST['ingredient'];
+    $id_concern = $_POST['id_concern'];
+    $gambar = $_POST['gambar'];
 
     // validation
-    if (empty($title)) {
+    if (empty($nama_skincare)) {
         $alert = "failed";
-        $errorTitle = "*Title cannot be empty!";
+        $errorNama_skincare = "*Nama skincare tidak boleh kosong!";
     }
-    if (empty($description)) {
+    if (empty($harga)) {
         $alert = "failed";
-        $errorDescription = "*Description cannot be empty!";
-    }
-    if (empty($release_year)) {
-        $alert = "failed";
-        $errorReleaseYear = "*Release Year cannot be empty!";
-    }
-    if (empty($language_id)) {
-        $alert = "failed";
-        $errorLanguageId = "*Language cannot be empty!";
-    }
-    if (empty($rental_duration)) {
-        $alert = "failed";
-        $errorRentalDuration = "*Rental Duration cannot be empty!";
-    }
-    if (empty($rental_rate)) {
-        $alert = "failed";
-        $errorRentalRate = "*Rental Rate cannot be empty!";
-    }
-    if (empty($length)) {
-        $alert = "failed";
-        $errorLength = "*Length cannot be empty!";
-    }
-    if (empty($replacement_cost)) {
-        $alert = "failed";
-        $errorReplacementCost = "*Replacement Cost cannot be empty!";
+        $errorHarga = "*Harga tidak boleh kosong!";
     }
     if (empty($rating)) {
         $alert = "failed";
-        $errorRating = "*Rating cannot be empty!";
+        $errorRating = "*Rating tidak boleh kosong!";
     }
-    if (empty($special_features)) {
+    if (empty($deskripsi)) {
         $alert = "failed";
-        $errorSpecialFeatures = "*Special Features cannot be empty!";
+        $errorDeskripsi = "*Deskripsi tidak boleh kosong!";
     }
-
-    // change format
-    $release_year = date('Y', strtotime("01-01-" . $release_year));
-    $special_features = implode(",", $special_features);
+    if (empty($ingredient)) {
+        $alert = "failed";
+        $errorIngredient = "*Ingredient tidak boleh kosong!";
+    }
+    if (empty($id_concern)) {
+        $alert = "failed";
+        $errorIdConcern = "*Id Concern Rate tidak boleh kosong!";
+    }
+    if (empty($gambar)) {
+        $alert = "failed";
+        $errorGambar = "*Gambar tidak boleh kosong!";
+    }
 
     // if not empty
     if (
-        !empty($title) && !empty($description) && !empty($release_year)
-        && !empty($language_id) && !empty($rental_duration) && !empty($rental_rate)
-        && !empty($length) && !empty($replacement_cost)
-        && !empty($rating) && !empty($special_features)
+        !empty($nama_skincare) && !empty($harga) && !empty($rating) && !empty($deskripsi)
+        && !empty($ingredient) && !empty($id_concern) && !empty($gambar)
     ) {
         // query create
-        $query = mysqli_query($conn, "INSERT INTO film(title, description, release_year, language_id, 
-            rental_duration, rental_rate, length, replacement_cost, rating, special_features)
-            VALUES('$title', '$description', '$release_year', '$language_id', '$rental_duration',
-            '$rental_rate', '$length', '$replacement_cost', '$rating', '$special_features')");
+        $query = mysqli_query($conn, "INSERT INTO skincare(nama_skincare, harga, rating, deskripsi, 
+            ingredient, id_concern, gambar)
+            VALUES('$nama_skincare', '$harga', '$rating', '$deskripsi', '$ingredient',
+            '$id_concern', '$gambar')");
 
         // change alert
         $alert = "success";
     }
 }
 ?>
+
+<!-- FRONT END -->
 <!DOCTYPE html>
 <html lang="en">
 

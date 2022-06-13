@@ -1,7 +1,7 @@
 <?php
-if (isset($_POST['search'])) :
+if (isset($_POST['filter'])) :
     require_once 'connect.php';
-    $search = $_POST['search'];
+    $filter = $_POST['filter'];
 
     $query = mysqli_query($conn, "SELECT * FROM skincare INNER JOIN concern ON skincare.id_concern = concern.id_concern WHERE nama_skincare=$search");
     while ($row = mysqli_fetch_object($query)) :
@@ -15,10 +15,10 @@ if (isset($_POST['search'])) :
                 <!-- Body -->
                 <div class="card-body">
                     <h5 class="card-title"><?= $row->nama_skincare; ?></h5>
-                    <h6 class="card-text">Rp <?= number_format($row->nama_concern) ?></h6>
+                    <h6 class="card-text">Rp <?= number_format($row->harga) ?></h6>
                     <div class="row">
                         <div class="col-8">
-                            <p class="card-text"><i class="fas fa-star text-warning"></i> <?= $row->nama_concern; ?></p>
+                            <p class="card-text"><i class="fas fa-star text-warning"></i> <?= $row->rating; ?></p>
                         </div>
                         <!-- Button Edit -->
                         <div class="col-2">
