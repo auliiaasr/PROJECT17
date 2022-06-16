@@ -71,124 +71,34 @@ if (isset($_POST['create'])) {
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AULIA SINTA_1122</title>
+    <title>POREs Be PURE - Situs Skincare Terlengkap & Terpercaya di Indonesia</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/0d95b64c38.js" crossorigin="anonymous"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
+    </style>
 </head>
 
-<body style="background-color: #242424">
+<body style="background-color: #EFEFEF">
     <!-- Title -->
-    <div class="my-3">
-        <h1 class="text-light text-center">CREATE MOVIE</h1>
-    </div>
-    <div class="mb-5 text-center">
-        <a href="index.php" class="btn btn-secondary shadow" type="button"><i class="fas fa-arrow-circle-left me-1"></i> Back</a>
-    </div>
-    <div class="container">
-        <!-- Content -->
-        <div class="p-4 shadow p-3 mb-5 bg-white rounded">
-            <form action="create.php" method="post" class="col-12">
-                <!-- alert -->
-                <?php if ($alert == "success") : ?>
-                    <div class="alert alert-success" role="alert">Create Data Success! <a href="index.php">Show</a></div>
-                <?php elseif ($alert == "failed") : ?>
-                    <div class="alert alert-danger" role="alert">Create Data Failed!</div>
-                <?php endif; ?>
-
-                <!-- form -->
-                <div class="form-group">
-                    <label for="">Title</label>
-                    <input type="text" class="form-control" name="title" placeholder="Title">
-                    <small class="form-text text-danger"><?= $errorTitle; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Description</label>
-                    <textarea class="form-control" name="description" placeholder="Description"></textarea>
-                    <small class="form-text text-danger"><?= $errorDescription; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Release Year</label>
-                    <input type="text" class="form-control" name="release_year" placeholder="Release Year">
-                    <small class="form-text text-danger"><?= $errorReleaseYear; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Language</label>
-                    <select class="form-control" name="language_id">
-                        <option value="1" selected>English</option>
-                        <option value="2">Italian</option>
-                        <option value="3">Japanese</option>
-                        <option value="4">Mandarin</option>
-                        <option value="5">French</option>
-                        <option value="6">German</option>
-                    </select>
-                    <small class="form-text text-danger"><?= $errorLanguageId; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Rental Duration (Days)</label>
-                    <input type="number" class="form-control" name="rental_duration" placeholder="Rental Duration">
-                    <small class="form-text text-danger"><?= $errorRentalDuration; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Rental Rate ($)</label>
-                    <input type="number" class="form-control" name="rental_rate" placeholder="Rental Rate" step=".01">
-                    <small class="form-text text-danger"><?= $errorRentalRate; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Length (Minutes)</label>
-                    <input type="number" class="form-control" name="length" placeholder="Length">
-                    <small class="form-text text-danger"><?= $errorLength; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Replacement Cost ($)</label>
-                    <input type="number" class="form-control" name="replacement_cost" placeholder="Replacement Cost" step=".01">
-                    <small class="form-text text-danger"><?= $errorReplacementCost; ?></small>
-                </div><br>
-                <div class="form-group">
-                    <label for="">Rating</label>
-                    <select class="form-control" name="rating">
-                        <option value="PG" selected>PG</option>
-                        <option value="PG-13">PG-13</option>
-                        <option value="NC-17">NC-17</option>
-                        <option value="G">G</option>
-                        <option value="R">R</option>
-                    </select>
-                    <small class="form-text text-danger"><?= $errorRating; ?></small>
-                </div><br>
-                <label for="">Special Features</label>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="special_features[]" value="Trailers" id="check0">
-                    <label class="form-check-label" for="check0">
-                        Trailers
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="special_features[]" value="Commentaries" id="check1">
-                    <label class="form-check-label" for="check1">
-                        Commentaries
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="special_features[]" value="Deleted Scenes" id="check2">
-                    <label class="form-check-label" for="check2">
-                        Deleted Scenes
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" name="special_features[]" value="Behind the Scenes" id="check3">
-                    <label class="form-check-label" for="check3">
-                        Behind the Scenes
-                    </label><br>
-                    <small class="form-text text-danger"><?= $errorSpecialFeatures; ?></small>
-                </div><br>
-                <div class="d-grid gap-2">
-                    <button type="submit" name="create" class="btn btn-success shadow bg-success"><i class="fas fa-plus-circle me-1"></i> Create</button>
-                </div>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid px-5">
+            <div class="my-3">
+                <h1 style="font-family: 'Mali', cursive;">POREs Be PURE</h1>
+            </div>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
+    </nav>
+    <div class="container">
+        <!-- Content -->
+        <div class="row mt-5 mx-5" id="content"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </body>
 
 </html>
