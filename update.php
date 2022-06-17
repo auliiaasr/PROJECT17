@@ -13,7 +13,7 @@ $id_concern = $_POST['id_concern'];
 
 // upload image
 if ($_FILES['gambar']['name'] != '') {
-    $lokasi = "Image/";
+    $lokasi = "image/";
     $gambar = $lokasi . $_FILES['gambar']['name'];
     $temp = $_FILES['gambar']['tmp_name'];
     move_uploaded_file($temp, $gambar);
@@ -38,4 +38,3 @@ if (
 } else {
     echo 'Data Tidak Boleh Kosong!';
 }
-?>
