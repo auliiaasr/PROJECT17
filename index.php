@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>POREs Be PURE - Situs Skincare Terlengkap & Terpercaya di Indonesia</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <script src="https://kit.fontawesome.com/0d95b64c38.js" crossorigin="anonymous"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Mali:wght@500&display=swap');
@@ -19,107 +19,52 @@
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid px-5">
             <div class="my-3">
-                <h1 style="font-family: 'Mali', cursive;">POREs Be PURE</h1>
+                <a href="index.php" class="text-decoration-none">
+                    <h1 class="text-primary" style="font-family: 'Mali', cursive;">POREs Be PURE</h1>
+                </a>
             </div>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+            <!-- Create Button -->
+            <div class="d-flex">
+                <button type="button" class="btn btn-primary px-4" id="create"><i class="fas fa-plus-circle me-1"></i> Tambah</button>
+            </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" id="container">
+        <div class="row justify-content-between mx-5 pe-5 my-4">
+            <!-- Sort -->
+            <div class="col-4">
+                <select class="form-select" aria-label="Default select example" id="sort">
+                    <option selected disabled>Urutkan Harga</option>
+                    <option value="ASC">Termurah</option>
+                    <option value="DESC">Termahal</option>
+                </select>
+            </div>
+            <!-- Filter -->
+            <div class="col-4">
+                <select class="form-select" aria-label="Default select example" id="filter">
+                    <option selected disabled>Filter Concern</option>
+                    <?php
+                        require_once 'connect.php';
+                        $query = mysqli_query($conn, "SELECT * FROM concern");
+                        while ($row = mysqli_fetch_object($query)) :
+                    ?>
+                    <option value="<?= $row->id_concern ?>"><?= $row->nama_concern ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </div>
+            <!-- Search -->
+            <div class="col-4">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Cari Skincare..." id="search">
+                </div>
+            </div>
+        </div>
         <!-- Content -->
-        <div class="row mt-5 mx-5" id="content"></div>
+        <div class="row mx-5" id="content"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            loadData();
-
-            function loadData() {
-                $.ajax({
-                    type: 'GET',
-                    url: 'read.php',
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            }
-
-            // Create Ajax
-            $('#create').on('click', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'create.php',
-                    cache: false,
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            });
-
-            // Delete Ajax
-            $('#delete').on('click', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'delete.php',
-                    data: {
-                        id: $(this).attr("value")
-                    },
-                    cache: false,
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            });
-
-            // Search Ajax
-            $('#search').on('keyup', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'search.php',
-                    data: {
-                        search: $(this).val()
-                    },
-                    cache: false,
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            });
-
-            // Filter Ajax
-            $('#filter').on('change', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'filter.php',
-                    data: {
-                        filter: $(this).val()
-                    },
-                    cache: false,
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            });
-
-            // Sort Ajax
-            $('#sort').on('change', function() {
-                $.ajax({
-                    type: 'POST',
-                    url: 'sort.php',
-                    data: {
-                        sort: $(this).val()
-                    },
-                    cache: false,
-                    success: function(data) {
-                        $('#content').html(data);
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="ajax.js"></script>
 </body>
 
 </html>
