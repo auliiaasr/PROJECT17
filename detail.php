@@ -9,7 +9,7 @@ $row = mysqli_fetch_object($query);
 <div class="row mt-4">
     <!-- Image -->
     <div class="col-5">
-        <img src="<?= $row->gambar ?>" class="card-img-top" alt="" />
+        <img src="glob(<?= $row->gambar; ?>)" class="card-img-top" alt="" />
     </div>
     <div class="col-6">
         <h2 class="mb-3"><?= $row->nama_skincare; ?></h2>

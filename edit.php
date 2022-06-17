@@ -41,12 +41,11 @@ $row = mysqli_fetch_object($query);
             <label for="" class="form-label">Concern</label>
             <select class="form-control" name="id_concern">
                 <?php
-                    require_once 'connect.php';
-                    $query = mysqli_query($conn, "SELECT * FROM concern");
-                    while ($concern = mysqli_fetch_object($query)) :
+                require_once 'connect.php';
+                $query = mysqli_query($conn, "SELECT * FROM concern");
+                while ($concern = mysqli_fetch_object($query)) :
                 ?>
-                    <option value="<?= $concern->id_concern ?>" 
-                        <?php ($concern->id_concern == $row->id_concern) ? 'selected' : '' ?>>
+                    <option value="<?= $concern->id_concern ?>" <?php ($concern->id_concern == $row->id_concern) ? 'selected' : '' ?>>
                         <?= $concern->nama_concern ?>
                     </option>
                 <?php endwhile; ?>
@@ -54,8 +53,8 @@ $row = mysqli_fetch_object($query);
         </div>
         <div class="mb-4">
             <label for="" class="form-label">Gambar</label><br>
-            <?php if (isset($row->gambar)): ?>
-                <img src="<?= $row->gambar ?>" class="mb-3" width="150" alt="" />
+            <?php if (isset($row->gambar)) : ?>
+                <img src="glob(<?= $row->gambar; ?>)" class="mb-3" width="150" alt="" />
             <?php endif; ?>
             <input type="text" name="gambar_lama" value="<?= $row->gambar ?>" hidden>
             <input class="form-control" type="file" name="gambar">

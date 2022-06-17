@@ -10,7 +10,7 @@ if (isset($_POST['search'])) :
             <div class="card" style="width: 15rem">
                 <!-- Image -->
                 <a class="px-1 py-1" href="JavaScript:void(0);" id="detail" value="<?= $row->id_skincare ?>">
-                    <img src="<?= $row->gambar; ?>" class="card-img-top" alt="" />
+                    <img src="glob(<?= $row->gambar; ?>)" class="card-img-top" alt="" />
                 </a>
                 <!-- Body -->
                 <div class="card-body">
