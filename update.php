@@ -16,7 +16,7 @@ if ($_FILES['gambar']['name'] != '') {
     $lokasi = "Image/";
     $gambar = $lokasi . $_FILES['gambar']['name'];
     $temp = $_FILES['gambar']['tmp_name'];
-    move_uploaded_file($temp, $gambar);
+    move_uploaded_file($temp, $baseUrl . $gambar);
 } else {
     $gambar = $_POST['gambar_lama'];
 }
