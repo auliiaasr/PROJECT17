@@ -12,7 +12,7 @@ $id_concern = $_POST['id_concern'];
 
 // upload image
 if ($_FILES['gambar']['name'] != '') {
-    $lokasi = "image/";
+    $lokasi = "Image/";
     $gambar = $lokasi . $_FILES['gambar']['name'];
     $temp = $_FILES['gambar']['tmp_name'];
     move_uploaded_file($temp, $gambar);

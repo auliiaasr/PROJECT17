@@ -54,7 +54,7 @@ $row = mysqli_fetch_object($query);
         <div class="mb-4">
             <label for="" class="form-label">Gambar</label><br>
             <?php if (isset($row->gambar)) : ?>
-                <img src="glob(<?= $row->gambar; ?>)" class="mb-3" width="150" alt="" />
+                <img src="<?= $baseUrl . $row->gambar; ?>" class="mb-3" width="150" alt="" />
             <?php endif; ?>
             <input type="text" name="gambar_lama" value="<?= $row->gambar ?>" hidden>
             <input class="form-control" type="file" name="gambar">
